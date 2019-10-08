@@ -4,21 +4,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Cabecera</title>
-</h:head>
-<h:body>
 
-	<!-- Aqu� va tu c�digo -->
-	<h:form>
-		<p:panelGrid columns="2">
-  NOMBRE:     <p:inputText value="#{controller.alumno.nombre}" />
-  APELLIDOS:  <p:inputText value="#{controller.alumno.apellidos}" />
-  USERID:     <p:inputText value="#{controller.alumno.iduser}" />
-  EMAIL:      <p:inputText value="#{controller.alumno.email}" />
-		</p:panelGrid>
-		<h:commandButton value="Salvar" action="#{controller.salva}" />
-	</h:form>
+<f:view locale="#{settings.locale}">
+	<h:head>
+		<title>#{msgs.tituloHead}</title>
+	</h:head>
+	<h:body>
 
-</h:body>
+		<!-- Aqu� va tu c�digo -->
+		<h:form>
+			<p:panelGrid columns="2">
+  #{msgs.nombre}:     <p:inputText value="#{controller.alumno.nombre}" />
+  #{msgs.apellidos}:  <p:inputText value="#{controller.alumno.apellidos}" />
+  #{msgs.userid}:     <p:inputText value="#{controller.alumno.iduser}" />
+  #{msgs.correo}:      <p:inputText value="#{controller.alumno.email}" />
+			</p:panelGrid>
+			<h:commandButton value="#{msgs.botonSalvar}"
+				action="#{controller.salva}" />
+			<br></br>
+			<h:commandButton value="#{msgs.enlaceCasa}" action="home" />
+		</h:form>
+	</h:body>
+</f:view>
 </html>
