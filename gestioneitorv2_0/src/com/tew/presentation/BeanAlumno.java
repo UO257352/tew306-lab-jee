@@ -13,6 +13,7 @@ public class BeanAlumno extends Alumno implements Serializable {
 	public BeanAlumno() {
 		iniciaAlumno(null);
 	}
+	
 	//Este método es necesario para copiar el alumno a editar cuando
 	//se pincha el enlace Editar en la vista listado.xhtml. Podría sustituirse
 	//por un método editar en BeanAlumnos.

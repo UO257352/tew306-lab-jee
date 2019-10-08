@@ -4,11 +4,15 @@ import impl.tew.business.classes.*;
 
 
 import java.util.List;
+import java.util.ResourceBundle;
+
+import javax.faces.context.FacesContext;
 
 import com.tew.business.AlumnosService;
 import com.tew.business.exception.EntityAlreadyExistsException;
 import com.tew.business.exception.EntityNotFoundException;
 import com.tew.model.Alumno;
+import com.tew.presentation.BeanAlumno;
 
 /**
  * Clase de implementación (una de las posibles) del interfaz de la fachada de
@@ -42,5 +46,19 @@ public class SimpleAlumnosService implements AlumnosService {
 	@Override
 	public Alumno findById(Long id) throws EntityNotFoundException {
 		return new AlumnosBuscar().find(id);
+	}
+	
+	public BeanAlumno createBeanAlumno() {
+		BeanAlumno alumno = (BeanAlumno)
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new
+						String("alumno"));
+		//si no existe lo creamos e inicializamos
+		if (alumno == null) {
+			System.out.println("BeanAlumnos - No existia");
+			alumno = new BeanAlumno();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "alumno",
+					alumno);
+		}
+		return alumno;
 	}
 }

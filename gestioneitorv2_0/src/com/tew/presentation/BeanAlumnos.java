@@ -2,6 +2,8 @@ package com.tew.presentation;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -123,16 +125,8 @@ public class BeanAlumnos implements Serializable{
 	public void init() {
 		System.out.println("BeanAlumnos - PostConstruct");
 		//Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
-		alumno = (BeanAlumno)
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new
-						String("alumno"));
-		//si no existe lo creamos e inicializamos
-		if (alumno == null) {
-			System.out.println("BeanAlumnos - No existia");
-			alumno = new BeanAlumno();
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "alumno",
-					alumno);
-		}
+		AlumnosService service = Factories.services.createAlumnosService();
+		alumno = service.createBeanAlumno();
 	}
 	@PreDestroy
 	public void end() {
