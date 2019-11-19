@@ -14,7 +14,7 @@ public class Main {
 	public Main() {
 		super();
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:8080/gestioneitorv4_0/pisos.json");
+		WebTarget target = client.target("http://datos.gijon.es/doc/transporte/busgijontr.json");
 		String result = target.request().get().readEntity(String.class);
 		System.out.println(result);
 		
@@ -23,15 +23,12 @@ public class Main {
 		 System.out.println(result);
 		 //Procesamos el texto JSON y lo pasamos a formato SIMPLE-JSON
 		 Object obj=JSONValue.parse(result);
-		 JSONArray pisos = (JSONArray)obj;
-		 //Imprimimos el contacto tercero (2) transformándolo a formato cadena.
-		System.out.println("----------- PISO ----------------");
-		 System.out.println(pisos.get(2).toString());
-		 System.out.println("----------- CIUDAD DE UN PISO ----------------");
-		 JSONObject unPiso = (JSONObject) JSONValue.parse(pisos.get(2).toString());
-		 String ciudad = (String)unPiso.get("Ciudad");
-		 System.out.println(ciudad);
-
+		 JSONArray autobuses = (JSONArray)obj;
+		 for(Object o : autobuses) {
+			 JSONObject autobus = (JSONObject) JSONValue.parse(o.toString());
+			 System.out.print(autobus.toString());
+			 
+		 }
 	}
 
 }

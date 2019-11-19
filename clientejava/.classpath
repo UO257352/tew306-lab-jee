@@ -17,7 +17,6 @@
 	<classpathentry kind="lib" path="build/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="build/httpclient-4.5.6.jar"/>
 	<classpathentry kind="lib" path="build/httpcore-4.4.10.jar"/>
-	<classpathentry kind="lib" path="build/json-20190722.jar"/>
 	<classpathentry kind="lib" path="build/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
