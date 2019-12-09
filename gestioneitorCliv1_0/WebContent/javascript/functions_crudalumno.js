@@ -96,6 +96,7 @@ function View(){
 		// (find('tr')) y
 		// nos quedamos con la segunda (get(1)) que es la contiene el "id" del
 		// alumno.
+		
 		var id_alumno = parseInt(celda.closest('tr').find('td').get(1).innerHTML);
 		return id_alumno;
 	} 
