@@ -24,7 +24,7 @@ this.edit = function(alumno) {
 //	Llamamos al servicio de edicion de alumno
 	AlumnosServicesRs.updateAlumno({
 		$entity : alumno,
-		$contentType : "application/json"
+		$contentType : "application/json"	
 	});
 //	Recargamos la lista de alumnos.
 	this.load();
